@@ -22,12 +22,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Remove old output files
-        run: |
-          if [ -f index.html ]; then
-            rm index.html;
-          fi;
           
       - name: Setup Pages
         uses: actions/configure-pages@v5
