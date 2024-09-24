@@ -1,0 +1,96 @@
+\documentclass[8pt, onecolumn]{article}			
+% \documentclass[font_size, pagestyle, page_column]{type_of_document}
+% (page 17-19)
+% This specifies what type of document you want to make, certain documents allow you to use certain commands and the formatting is different/specific for each type of document.  This document is called an article and it is the most standard type of document.
+
+
+
+% -----------------------------------------
+% Packages
+% -----------------------------------------
+\usepackage{graphicx}	% This package allow you to insert PostScript figures
+
+\usepackage{amsmath} 	% This is a typical math package - it allows you to type certain known math symbols, like exp for expoential 
+\usepackage{amssymb} 	% This is a typical math package
+\usepackage{amsthm}		% This is a typical math package
+
+\usepackage{color}		% This package allows you to define colors
+
+\usepackage{array}  % To make a column array table
+\usepackage[table]{xcolor}  % Color of a table
+
+\usepackage[hidelinks]{hyperref} % to reference email and website
+
+\usepackage{tcolorbox}  % creates a text box with a background color
+
+\usepackage{geometry}  % For adjusting the margins
+
+\usepackage{enumitem}
+%\setlength\itemsep{0em}
+
+\usepackage[none]{hyphenat}  % to prevent word-wrapping with hyphenation
+
+
+
+% ---------------------------
+% Color DEFINITIONS
+% ---------------------------
+\definecolor{green}{RGB}{34, 153, 84}  % CV title color  green
+
+
+
+% ---------------------------
+% Specific settings 
+% ---------------------------
+\setlength{\parindent}{0pt}  % disable global usage of paragraph indentation
+\setlength{\fboxrule}{0pt}  % remove the border for the fbox
+\setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
+
+\pagenumbering{gobble}  % Remove page numbering
+% -----------------------------------------
+
+
+
+
+
+
+
+% -----------------------------------------
+% Define page margins
+% -----------------------------------------
+\geometry{a4paper, total={170mm,257mm}, left=7mm, top=2mm, bottom=0mm}
+% -----------------------------------------
+
+
+% Define column type table templete
+\newcolumntype{C}[2]{>{\columncolor{#1}\raggedleft\arraybackslash}p{#2}}
+
+
+
+
+% -----------------------------------------
+% Preamble
+% -----------------------------------------
+%\title{...}
+%\author{...}
+%\date{...}
+
+% -----------------------------------------
+% This is the start of the body of the document.  The \begin{document} is required for all latex documents.
+% -----------------------------------------
+\begin{document}
+
+%\maketitle
+
+% Main content
+\section{Section title}
+Text on a topic.
+
+%\section{XXX}
+
+
+% Bibliography
+%\bibliographystyle{...}
+%\bibliography{...}
+
+\end{document}				% REQUIRED
