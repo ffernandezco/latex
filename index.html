@@ -77,11 +77,14 @@ const repoName = 'build_deploy_html_latex';
 // Step 0
 // ----------------------------------------------------
 async function show_tex_wo_CORS() {
-
-  var file_download_url = "https://raw.githubusercontent.com/codesolutions2/build-deploy_html/main/index.tex";
-	  var text_out = await fetch(file_download_url).then(res => res.text()).then(str_data => { return str_data;}).catch(error => { console.log(error); });
-
-  document.getElementById('tex_text').innerHTML = text_out;
+	
+	var file_download_url = "https://raw.githubusercontent.com/codesolutions2/build-deploy_html/main/index.tex";
+	var text_out = await fetch(file_download_url)
+		.then(res => res.text())
+		.then(str_data => { console.log("str_data: ", str_data); return str_data;})
+		.catch(error => { console.log(error); });
+	
+	document.getElementById('tex_text').innerHTML = text_out;
 }
 
 
