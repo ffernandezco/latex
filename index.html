@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<!-- ---------------------------------------- -->
+<!-- View two split window -->
+<div align="left">
+<table style='text-align: left; width: 500px; display:block'>
+<tr>
+
+<th id="pdf_viewer_input">
+<h3>[Step 0] View the .tex file.</h3>
+<textarea id="tex_file" rows="35" cols="100" placeholder=".tex file" style="display:block" width:100px; height: 200px;></textarea>
+<button id="show_tex_wo_CORS" onclick="show_tex_wo_CORS()">[Step 0] show_pdf_wo_CORS</button>
+</th>
+	
+<!-- ---------------------------------------- -->
+
+<th id="pdf_viewer_output">
+<h3>[Step 1] View PDF.</h3>
+</th>
+	
+</tr>
+</table>
+</div>  
+<!-- ---------------------------------------- -->
+
+
+<!-- ---------------------------------------- -->
+<!-- CSS -->
+<style>
+div { padding: 10px; display:block; font-family:courier; font-size:15px; height:300px; }
+	
+div#notification { position: relative; color: #3236a8; }
+div#error { position: relative; color: #bd1f17; }
+
+table {vertical-align: top; border-collapse: collapse; position: relative; z-index: 0; border: 0px solid black;}
+
+tr {vertical-align: top; border: 0px solid black; padding: 30px 30px; }
+
+th, td {vertical-align: top; border: 0px solid black; padding: 10px; }
+th#pdf_viewer_input {width: 100%; }
+th#pdf_viewer_output {width: 100%; }
+
+object#pdf_object_element {position: absolute; vertical-align: top; top: 200; z-index: 200; }
+</style>
+
+	  
+<!-- --------------------------------------------------- -->
+
+<script>
+
+
+// ----------------------------------------------------
+// Step 0
+// ----------------------------------------------------
+async function show_tex_wo_CORS() {
+var file_download_url = "https://codesolutions2.github.io/build_deploy_html_latex/index.tex";
+  
+	return await fetch(file_download_url)
+		.then(res => res.text())
+		.then(str_data => {
+      console.log("str_data: ", str_data);
+      document.getElementById("tex_file").innerHTML = str_data;
+    })
+		.catch(error => { console.log(error); });
+}
+  
+// ----------------------------------------------------
+// Step 1
+// ----------------------------------------------------
+// Show pdf without CORS
+async function show_pdf_wo_CORS() {
+  
+  try {
+  	// without CORS: name of file
+    var file_download_url = "https://codesolutions2.github.io/build_deploy_html_latex/index.pdf";
+	  
+  	let file_download_url_name = file_download_url.split('/').pop();
+  	console.log("file_download_name: ", file_download_url_name);
+  
+  	var objectElement = document.createElement('object');
+  	objectElement.setAttribute("id", "pdf_object_element");
+  	objectElement.setAttribute("type", "application/pdf");
+  	objectElement.setAttribute("width", 800);
+  	objectElement.setAttribute("height", 1200);
+  	objectElement.setAttribute("data", file_download_url_name);
+  	document.getElementById('pdf_viewer_output').appendChild(objectElement);
+	  
+  } catch (error){
+    document.getElementById("error").innerText = error;
+  }
+  
+}
+
+  
+</script>
+</body>
+</html>
