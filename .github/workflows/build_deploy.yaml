@@ -40,7 +40,7 @@ jobs:
 
           DOCUMENT_NAME="$(cat cb.txt | cut -d '|' -f 1)";
           echo "DOCUMENT_NAME = $DOCUMENT_NAME";
-          DOCUMENT_NAME_WO_EXT="$(echo $DOCUMENT_NAME | cut -d '.tex' -f 1)";
+          DOCUMENT_NAME_WO_EXT="$(echo $DOCUMENT_NAME | cut -d '.' -f 1)";
           echo "DOCUMENT_NAME_WO_EXT = $DOCUMENT_NAME_WO_EXT"; 
           
           latex $DOCUMENT_NAME
